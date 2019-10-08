@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
+import userService from '../../utils/userService';
 import LoginPage from '../LoginHomePage/LoginPage';
 import SignupPage from '../SignupPage/SignupPage';
 import MatchBoard from '../../components/MatchBoard/MatchBoard';
-import userService from '../../utils/userService';
 
 class App extends Component {
   constructor() {
@@ -27,6 +27,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() =>
             <MatchBoard
+              user={this.state.user}
             />
           } />
           <Route exact path='/signup' render={({ history }) =>
