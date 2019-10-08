@@ -11,19 +11,24 @@ class App extends Component {
     super();
     this.state = {
       ...this.getInitialState(),
-      difficulty: 'Easy',
-      scores: [],
       user: userService.getUser()
     };
   }
+
+  getInitialState() {
+    return {
+    };
+  }
+
 
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
   }
 
-
-
+  handleSignup = () => {
+    this.setState({ user: userService.getUser() });
+  }
 
   render() {
     return (
@@ -39,6 +44,7 @@ class App extends Component {
           <Route exact path='/signup' render={({ history }) =>
             <SignupPage
               history={history}
+              handleSignup={this.handleSignup}
             />
           } />
           <Route exact path='/login' render={() =>
