@@ -7,6 +7,7 @@ const MatchBoard = (props) => (
   <div>
     <NavBar
       user={props.user}
+      handleLogout={props.handleLogout}
     />
   </div>
 );

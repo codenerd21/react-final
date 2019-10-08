@@ -17,6 +17,11 @@ class App extends Component {
     };
   }
 
+  handleLogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+  }
+
 
 
 
@@ -28,6 +33,7 @@ class App extends Component {
           <Route exact path='/' render={() =>
             <MatchBoard
               user={this.state.user}
+              handleLogout={this.handleLogout}
             />
           } />
           <Route exact path='/signup' render={({ history }) =>
