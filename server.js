@@ -18,8 +18,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/users', require('./routes/api/users'));
 
+
 app.use(require('./config/auth'));
-app.use('/api/scores', require('./routes/api/scores'));
 
 // "Catch All" Route
 

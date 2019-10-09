@@ -26,6 +26,7 @@ async function login(req, res) {
 
 
 async function signup(req, res) {
+  console.log('email test');
   const user = new User(req.body);
   try {
     await user.save();

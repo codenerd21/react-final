@@ -1,17 +1,25 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 6;
 
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, required: true, lowercase: true, unique: true },
-  password: String
+  password: String,
+  matches: [],
+  responses: {
+    question1: String,
+    question2: String,
+    question3: String,
+    question4: String,
+    question5: String
+  }
 }, {
   timestamps: true
 });
 
-userSchema.set('toJSON', {
+userSchema.set("toJSON", {
   transform: function (doc, ret) {
     // remove the password property when serializing doc to JSON
     delete ret.password;
@@ -19,9 +27,10 @@ userSchema.set('toJSON', {
   }
 });
 
-userSchema.pre('save', function (next) {
+userSchema.pre("save", function (next) {
+  // 'this' will be set to the current document
   const user = this;
-  if (!user.isModified('password')) return next();
+  if (!user.isModified("password")) return next();
   // password has been changed - salt and hash it
   bcrypt.hash(user.password, SALT_ROUNDS, function (err, hash) {
     if (err) return next(err);
@@ -32,7 +41,11 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.methods.comparePassword = function (tryPassword, cb) {
-  bcrypt.compare(tryPassword, this.password, cb);
+  // 'this' represents the document that you called comparePassword on
+  bcrypt.compare(tryPassword, this.password, function (err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);
