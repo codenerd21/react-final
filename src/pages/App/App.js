@@ -42,11 +42,18 @@ class App extends Component {
           <Route
             exact
             path="/profile"
-            render={() => (
-              <ProfilePage
-                user={this.state.user}
-                handleLogout={this.handleLogout}
-              />
+            render={(history) => (
+              this.state.user
+                ?
+                <ProfilePage
+                  user={this.state.user}
+                  handleLogout={this.handleLogout}
+                />
+                :
+                <LoginPage
+                  history={history}
+                  handleSignupOrLogin={this.handleSignupOrLogin}
+                />
             )}
           />
           <Route

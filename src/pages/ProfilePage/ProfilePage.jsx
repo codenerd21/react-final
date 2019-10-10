@@ -3,16 +3,17 @@ import React, { Component } from "react";
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
-    this.state = { message: "" };
+    this.state = {};
   }
 
-  updateMessage = msg => {
-    this.setState({ message: msg });
-  };
-
   render() {
-    return <div className="ProfilePage">Profile Page</div>;
+    return <div className="ProfilePage">Profile Page
+    <h3>{this.props.user.name}</h3>
+      <h3>{this.props.user.email}</h3>
+    </div>;
   }
 }
 
 export default ProfilePage;
+
+
