@@ -8,13 +8,15 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, lowercase: true, unique: true },
   password: String,
   matches: [],
-  responses: {
-    question1: String,
-    question2: String,
-    question3: String,
-    question4: String,
-    question5: String
-  }
+  responses: [
+    {
+      question1: String,
+      question2: String,
+      question3: String,
+      question4: String,
+      question5: String
+    }
+  ]
 }, {
   timestamps: true
 });

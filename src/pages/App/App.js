@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: userService.getUser()
+      user: userService.getUser(),
     };
   }
 
@@ -31,7 +31,7 @@ class App extends Component {
         <Switch>
           <Route
             exact
-            path="/"
+            path="/match"
             render={() => (
               <MatchBoard
                 user={this.state.user}

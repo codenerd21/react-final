@@ -4,8 +4,15 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login,
+  index
 };
+
+function index(req, res) {
+  User.find({}, function (err, user) {
+    res.render('/match', { user });
+  });
+}
 
 async function login(req, res) {
   try {
@@ -26,7 +33,6 @@ async function login(req, res) {
 
 
 async function signup(req, res) {
-  console.log('email test');
   const user = new User(req.body);
   try {
     await user.save();
@@ -47,3 +53,5 @@ function createJWT(user) {
     { expiresIn: '24h' }
   );
 }
+
+
