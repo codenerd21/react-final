@@ -4,15 +4,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login,
-  index
+  login
 };
-
-function index(req, res) {
-  User.find({}, function (err, user) {
-    res.render('/match', { user });
-  });
-}
 
 async function login(req, res) {
   try {

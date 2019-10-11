@@ -3,15 +3,16 @@ import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import userService from "../../utils/userService";
 import LoginPage from "../LoginHomePage/LoginPage";
+import HomePage from "../HomePage/HomePage";
 import SignupPage from "../SignupPage/SignupPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
-import MatchBoard from "../../components/MatchBoard/MatchBoard";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: userService.getUser(),
+      user: userService.getUser()
+
     };
   }
 
@@ -27,13 +28,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">GA Dates</header>
+        <header className="App-header">GA Connections</header>
         <Switch>
           <Route
             exact
-            path="/match"
+            path="/"
             render={() => (
-              <MatchBoard
+              <HomePage
                 user={this.state.user}
                 handleLogout={this.handleLogout}
               />
