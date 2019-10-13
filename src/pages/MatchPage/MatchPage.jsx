@@ -10,13 +10,24 @@ class MatchPage extends Component {
   }
 
   handleSearch = e => {
-    let users = this.state.users;
-    if (e.target.value) {
-      users = users.filter(s => {
-        return s.code.includes(e.target.value);
-      });
-    }
-    this.setState({ users });
+    // 1) Determine which question was answered 
+
+    console.log("You have answered question: " + e.target.name + e.target.value);
+    // 2) Update question in the db
+    // 3) Filter users based on answer
+
+
+
+
+
+
+    // let users = this.state.users;
+    // if (e.target.value) {
+    //   users = users.filter(s => {
+    //     return s.code.includes(e.target.value);
+    //   });
+    // }
+    // this.setState({ users });
   };
 
   render() {
@@ -28,15 +39,15 @@ class MatchPage extends Component {
             My Study Choice:<br />
             <input
               type="radio"
-              name="study-type"
-              value="a"
+              name="1"
+              value="Software Engineering"
               onChange={e => this.handleSearch(e)}
             />
             Software Engineering<br />
             <input
               type="radio"
-              name="study-type"
-              value="b"
+              name="1"
+              value="UX Design"
               onChange={e => this.handleSearch(e)}
             />
             UX Design
@@ -49,15 +60,15 @@ class MatchPage extends Component {
             Which is worse?<br />
             <input
               type="radio"
-              name="worse"
-              value="c"
+              name="2"
+              value="Waiting for the Elevator at GA"
               onChange={e => this.handleSearch(e)}
             />
             Waiting for the Elevator at GA<br />
             <input
               type="radio"
-              name="worse"
-              value="d"
+              name="2"
+              value="Waiting for the Bathroom at GA"
               onChange={e => this.handleSearch(e)}
             />
             Waiting for the Bathroom at GA
@@ -70,15 +81,15 @@ class MatchPage extends Component {
             My Status:<br />
             <input
               type="radio"
-              name="relationship"
-              value="e"
+              name="3"
+              value="Single"
               onChange={e => this.handleSearch(e)}
             />
             Single<br />
             <input
               type="radio"
-              name="relationship"
-              value="f"
+              name="3"
+              value="In a Relationship"
               onChange={e => this.handleSearch(e)}
             />
             In a Relationship
@@ -90,15 +101,15 @@ class MatchPage extends Component {
             Which would you be willing to GIVE UP?:<br />
             <input
               type="radio"
-              name="giveup"
-              value="g"
+              name="4"
+              value="Coffee"
               onChange={e => this.handleSearch(e)}
             />
             Coffee<br />
             <input
               type="radio"
-              name="giveup"
-              value="h"
+              name="4"
+              value="Chocolate"
               onChange={e => this.handleSearch(e)}
             />
             Chocolate
@@ -111,15 +122,15 @@ class MatchPage extends Component {
             My Exp. Level: (Programming | Design | Data)<br />
             <input
               type="radio"
-              name="exp"
-              value="i"
+              name="5"
+              value="Beginner"
               onChange={e => this.handleSearch(e)}
             />
             Beginner<br />
             <input
               type="radio"
-              name="exp"
-              value="j"
+              name="5"
+              value="Intermediate"
               onChange={e => this.handleSearch(e)}
             />
             Intermediate
@@ -132,15 +143,15 @@ class MatchPage extends Component {
             Lunch Preference:<br />
             <input
               type="radio"
-              name="lunch"
-              value="k"
+              name="6"
+              value="Brown Bagging It"
               onChange={e => this.handleSearch(e)}
             />
             Brown Bagging It<br />
             <input
               type="radio"
-              name="lunch"
-              value="l"
+              name="6"
+              value="Eat Out"
               onChange={e => this.handleSearch(e)}
             />
             Eat Out
@@ -153,15 +164,15 @@ class MatchPage extends Component {
             First Date:<br />
             <input
               type="radio"
-              name="date"
-              value="m"
+              name="7"
+              value="Man Should Pay Bill or One Person"
               onChange={e => this.handleSearch(e)}
             />
             Man Should Pay Bill or One Person<br />
             <input
               type="radio"
-              name="date"
-              value="n"
+              name="7"
+              value="Ok to Split"
               onChange={e => this.handleSearch(e)}
             />
             Ok to Split
@@ -174,15 +185,15 @@ class MatchPage extends Component {
             Sports Team:<br />
             <input
               type="radio"
-              name="sports"
-              value="o"
+              name="8"
+              value="Oakland Raiders"
               onChange={e => this.handleSearch(e)}
             />
             Oakland Raiders<br />
             <input
               type="radio"
-              name="sports"
-              value="p"
+              name="8"
+              value="SF 49ers"
               onChange={e => this.handleSearch(e)}
             />
             SF 49ers
@@ -195,15 +206,15 @@ class MatchPage extends Component {
             Do you have a FEAR OF:<br />
             <input
               type="radio"
-              name="fear"
-              value="q"
+              name="9"
+              value="Success"
               onChange={e => this.handleSearch(e)}
             />
             Success<br />
             <input
               type="radio"
-              name="fear"
-              value="r"
+              name="9"
+              value="Failure"
               onChange={e => this.handleSearch(e)}
             />
             Failure
@@ -216,15 +227,15 @@ class MatchPage extends Component {
             My Ideal Friday Night (Blow off steam):<br />
             <input
               type="radio"
-              name="friday"
-              value="s"
+              name="10"
+              value="Drinks and Happy Hour"
               onChange={e => this.handleSearch(e)}
             />
             Drinks and Happy Hour<br />
             <input
               type="radio"
-              name="friday"
-              value="t"
+              name="10"
+              value="Dancing and Clubs"
               onChange={e => this.handleSearch(e)}
             />
             Dancing and Clubs

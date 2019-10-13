@@ -40,8 +40,12 @@ async function signup(req, res) {
 }
 
 async function match(req, res) {
-  const users = await User.find({})
-  res.json(users);
+  try {
+    const users = await User.find({})
+    res.json(users);
+  } catch (err) {
+    return res.status(401).json(err);
+  }
 }
 
 /*----- Helper Functions -----*/

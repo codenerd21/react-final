@@ -10,6 +10,13 @@ export default {
   index
 };
 
+function update(question) {
+  // ----------------- POST Method
+  // 1) Get current user from the db
+  // 2) Update the question that was passed as argument
+  // 3) Call on user update end point to update user 
+}
+
 function index() {
   const url = `${BASE_URL}match`;
   return fetch(url)
