@@ -10,7 +10,7 @@ router.post('/login', usersCtrl.login);
 
 /*---------- Protected Routes ----------*/
 
-
+router.get('/match', usersCtrl.match);
 
 
 module.exports = router;

@@ -6,14 +6,19 @@ import LoginPage from "../LoginHomePage/LoginPage";
 import HomePage from "../HomePage/HomePage";
 import SignupPage from "../SignupPage/SignupPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
+import MatchPage from "../MatchPage/MatchPage";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: userService.getUser()
-
+      user: userService.getUser(),
+      users: []
     };
+  }
+
+  handleUpdateUsers = (users) => {
+    this.setState({ users });
   }
 
   handleLogout = () => {
@@ -36,6 +41,18 @@ class App extends Component {
             render={() => (
               <HomePage
                 user={this.state.user}
+                handleLogout={this.handleLogout}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/match"
+            render={() => (
+              <MatchPage
+                user={this.state.user}
+                users={this.state.users}
+                handleUpdateUsers={this.handleUpdateUsers}
                 handleLogout={this.handleLogout}
               />
             )}
@@ -80,6 +97,7 @@ class App extends Component {
         </Switch>
       </div>
     );
+
   }
 }
 

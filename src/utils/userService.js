@@ -2,6 +2,20 @@ import tokenService from './tokenService';
 
 const BASE_URL = '/api/users/';
 
+export default {
+  signup,
+  getUser,
+  logout,
+  login,
+  index
+};
+
+function index() {
+  const url = `${BASE_URL}match`;
+  return fetch(url)
+    .then((res) => res.json());
+}
+
 function signup(user) {
   return fetch(BASE_URL + 'signup', {
     method: 'POST',
@@ -10,13 +24,9 @@ function signup(user) {
   })
     .then(res => {
       if (res.ok) return res.json();
-      // Probably a duplicate email
       throw new Error('Email already taken!');
     })
-    // Parameter destructuring!
     .then(({ token }) => tokenService.setToken(token));
-  // The above could have been written as
-  //.then((token) => token.token);
 }
 
 function getUser() {
@@ -40,10 +50,3 @@ function login(creds) {
     })
     .then(({ token }) => tokenService.setToken(token));
 }
-
-export default {
-  signup,
-  getUser,
-  logout,
-  login,
-};
