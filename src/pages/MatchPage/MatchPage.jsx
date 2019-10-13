@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import userService from '../../utils/userService';
+import './MatchPage.css'
 
 class MatchPage extends Component {
 
@@ -9,15 +10,16 @@ class MatchPage extends Component {
   }
 
   render() {
-    // console.log(`all users listed: ${JSON.stringify(this.props.users)}`);
-    const userNames = this.props.users.map((user, idx) => (
-      <div key={idx}>
-        {user.name}
-      </div>
-    ));
-
     return (
-      userNames
+      <div className='App'>
+        <section className='matchboard'>
+          {this.props.users.map((user, idx) =>
+            <div className='matchname' key={idx}>
+              {user.name}
+            </div>
+          )}
+        </section>
+      </div>
     )
   }
 }
