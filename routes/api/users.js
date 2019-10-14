@@ -9,7 +9,7 @@ router.post('/login', usersCtrl.login);
 
 
 /*---------- Protected Routes ----------*/
-
+// router.use(require('../../config/auth'));
 router.get('/match', usersCtrl.match);
 router.put('/:id', usersCtrl.update);
 

@@ -15,7 +15,7 @@ function update(user) {
   return fetch(`${BASE_URL}/${user._id}`, {
     method: 'PUT',
     headers: {
-      'content-type': 'application/json',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
     body: JSON.stringify(user)

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import userService from "../../utils/userService";
 import LoginPage from "../LoginHomePage/LoginPage";
 import HomePage from "../HomePage/HomePage";
@@ -68,10 +68,7 @@ class App extends Component {
                   handleLogout={this.handleLogout}
                 />
                 :
-                <LoginPage
-                  history={history}
-                  handleSignupOrLogin={this.handleSignupOrLogin}
-                />
+                <Redirect to='/login' />
             )}
           />
           <Route
