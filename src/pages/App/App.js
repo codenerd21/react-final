@@ -48,7 +48,7 @@ class App extends Component {
           <Route
             exact
             path="/match"
-            render={() => (
+            render={({ history }) => (
               <MatchPage
                 user={this.state.user}
                 users={this.state.users}

@@ -10,16 +10,16 @@ const userSchema = new mongoose.Schema({
   matches: [],
   responses: [
     {
-      question1: String,
-      question2: String,
-      question3: String,
-      question4: String,
-      question5: String,
-      question6: String,
-      question7: String,
-      question8: String,
-      question9: String,
-      question10: String
+      q1: String,
+      q2: String,
+      q3: String,
+      q4: String,
+      q5: String,
+      q6: String,
+      q7: String,
+      q8: String,
+      q9: String,
+      q10: String
     }
   ]
 }, {
