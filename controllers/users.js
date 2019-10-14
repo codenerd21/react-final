@@ -50,12 +50,11 @@ async function update(req, res) {
   res.status(200).json(updateUserResponse);
 }
 
-
 /*----- Helper Functions -----*/
 
 function createJWT(user) {
   return jwt.sign(
-    { user }, // data payload
+    { user },
     SECRET,
     { expiresIn: '24h' }
   );

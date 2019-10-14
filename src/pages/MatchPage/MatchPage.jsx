@@ -8,7 +8,7 @@ class MatchPage extends Component {
     super();
     this.state = {
       responses: [],
-      user: ""
+      user: "",
     };
   }
 
@@ -18,49 +18,10 @@ class MatchPage extends Component {
     this.state.user = this.props.user;
   }
 
-
-  // handleSearch = e => {
-  //   let user = this.state.user;
-  //   let responses = user.responses[0];
-  //   if (e.target.value === "Software Engineering") {
-  //     responses.q1 = e.target.value;
-  //   } else if (e.target.value === "UX Design") {
-  //     responses.q1 = e.target.value;
-  //     console.log(responses.q1);
-  //   } else if (e.target.value === "Waiting for the Elevator at GA") {
-  //     responses.q2 = e.target.value;
-  //   } else if (e.target.value === "Waiting for the Bathroom at GA") {
-  //     responses.q2 = e.target.value;
-  //     console.log(responses.q2);
-  //   } else if (e.target.value === "Single") {
-  //     responses.q3 = e.target.value;
-  //   } else if (e.target.value === "In a Relationship") {
-  //     responses.q3 = e.target.value;
-  //     console.log(responses.q3);
-  //   } else if (e.target.value === "Coffee") {
-  //     responses.q4 = e.target.value;
-  //   } else if (e.target.value === "Chocolate") {
-  //     responses.q4 = e.target.value;
-  //     console.log(responses.q4);
-  //   } else {
-  //     return;
-  //   }
-  // }
-
-  // handleSearch = async e => {
-  //   let user = this.state.user;
-  //   let responses = user.responses[0];
-  //   responses[e.target.name] = e.target.value;
-  //   console.log(responses[e.target.name]);
-  //   const updatedUser = await userService.update(user);
-  //   this.setState()
-  // }
-
   handleSearch = async e => {
     let user = this.state.user;
     let responses = user.responses[0];
     responses[e.target.name] = e.target.value;
-    console.log(responses[e.target.name]);
     const updatedUser = await userService.update(user);
     const newUpdatedUser = this.state.responses.map(resp =>
       resp._id === updatedUser._id ? updatedUser : resp
@@ -69,39 +30,6 @@ class MatchPage extends Component {
       { responses: newUpdatedUser }
     );
   }
-
-
-
-
-  // const newTasksArray = this.state.tasks.map(task =>
-  //   task._id === updatedTask._id ? updatedTask : task
-  // );
-  // this.setState(
-  //   { tasks: newTasksArray },
-  //   // Using cb to wait for state to update before rerouting
-  //   () => this.props.history.push('/')
-  // );
-
-  // 2) Update question in the db
-  // 3) Filter users based on answer
-
-  // let users = this.state.users;
-  // if (e.target.value) {
-  //   users = users.filter(user => {
-  //     let otherUsersResponses = user.responses[0];
-  //     if (questionNumber == "3"){
-  //        let answer = otherUsersResponses.question3 
-  //        if(answer.includes(e.target.value){
-  //          return true;
-  //}
-  //}
-  //     1) 
-  //     2) If a single response matches / includes e.target.value return treu an 
-  //     return user.responses[0].includes(e.target.value);
-  //   });
-  // }
-  // this.setState({ users });
-
 
   render() {
     return (

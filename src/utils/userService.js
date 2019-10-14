@@ -11,13 +11,6 @@ export default {
   index
 };
 
-// function update(question) {
-// ----------------- POST Method
-// 1) Get current user from the db
-// 2) Update the question that was passed as argument
-// 3) Call on user update end point to update user 
-
-
 function update(user) {
   return fetch(`${BASE_URL}/${user._id}`, {
     method: 'PUT',
@@ -63,7 +56,6 @@ function login(creds) {
     body: JSON.stringify(creds)
   })
     .then(res => {
-      // Valid login if we have a status of 2xx (res.ok)
       if (res.ok) return res.json();
       throw new Error('Bad Credentials!');
     })
