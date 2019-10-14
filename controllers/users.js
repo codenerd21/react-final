@@ -49,6 +49,7 @@ async function update(req, res) {
   res.status(200).json(updateUserResponse);
 }
 
+
 /*----- Helper Functions -----*/
 
 function createJWT(user) {
