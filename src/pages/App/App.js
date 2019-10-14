@@ -21,6 +21,13 @@ class App extends Component {
     this.setState({ users });
   }
 
+  handleDeleteUser = async (id, match) => {
+    await userService.deleteUser(id);
+    this.setState(state => ({
+      users: state.users.filter(user => user._id !== id)
+    }), () => this.props.history.push('/'));
+  }
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
@@ -54,6 +61,7 @@ class App extends Component {
                 users={this.state.users}
                 handleUpdateUsers={this.handleUpdateUsers}
                 handleLogout={this.handleLogout}
+                match={match}
               />
             )}
           />
@@ -66,6 +74,7 @@ class App extends Component {
                 <ProfilePage
                   user={this.state.user}
                   handleLogout={this.handleLogout}
+                  handleDeleteUser={this.props.handleDeleteUser}
                 />
                 :
                 <Redirect to='/login' />

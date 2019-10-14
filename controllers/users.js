@@ -6,9 +6,14 @@ module.exports = {
   signup,
   login,
   match,
-  update
+  update,
+  delete: deleteUser
 };
 
+async function deleteUser(req, res) {
+  const deletedUser = await User.findByIdAndRemove(req.params.id);
+  res.status(200).json(deletedUser);
+}
 
 async function login(req, res) {
   try {

@@ -8,8 +8,20 @@ export default {
   logout,
   update,
   login,
-  index
+  index,
+  delete: deleteUser
 };
+
+function deleteUser(idx) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': `Bearer  + ${token}`
+    }
+  }).then(res => res.json());
+}
+
 
 function update(user) {
   return fetch(`${BASE_URL}/${user._id}`, {
