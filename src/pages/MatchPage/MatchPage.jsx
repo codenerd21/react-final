@@ -20,8 +20,20 @@ class MatchPage extends Component {
 
   handleSearch = async e => {
     let user = this.state.user;
+    console.log("----> user: " + JSON.stringify(user));
     let responses = user.responses[0];
-    responses[e.target.name] = e.target.value;
+    console.log("----> responses: " + responses);
+    if (!responses) {
+      console.log("responses does not exist");
+      responses = {};
+      responses[e.target.name] = e.target.value;
+      user.responses = [];
+      user.responses.push(responses);
+    } else {
+      console.log("responses exist");
+      responses[e.target.name] = e.target.value;
+    }
+    console.log("responses[e.target.name]  " + responses[e.target.name]);
     const updatedUser = await userService.update(user);
     const newUpdatedUser = this.state.responses.map(resp =>
       resp._id === updatedUser._id ? updatedUser : resp
