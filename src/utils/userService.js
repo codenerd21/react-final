@@ -6,15 +6,27 @@ export default {
   signup,
   getUser,
   logout,
+  update,
   login,
   index
 };
 
-function update(question) {
-  // ----------------- POST Method
-  // 1) Get current user from the db
-  // 2) Update the question that was passed as argument
-  // 3) Call on user update end point to update user 
+// function update(question) {
+// ----------------- POST Method
+// 1) Get current user from the db
+// 2) Update the question that was passed as argument
+// 3) Call on user update end point to update user 
+
+
+function update(user) {
+  return fetch(`${BASE_URL}/${user._id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    },
+    body: JSON.stringify(user)
+  }).then(res => res.json());
 }
 
 function index() {

@@ -4,27 +4,67 @@ import './MatchPage.css'
 
 class MatchPage extends Component {
 
-  async componentDidMount() {
-    const users = await userService.index();
-    this.props.handleUpdateUsers(users);
+  constructor() {
+    super();
+    this.state = {
+      responses: [],
+      user: ""
+    };
   }
 
-  handleSearch = e => {
-    // 1) Determine which question was answered 
+  async componentDidMount() {
+    const users = await userService.index();
+    console.log("---> users in MatchPage: " + users);
+    this.props.handleUpdateUsers(users);
+    this.state.user = this.props.user;
+  }
 
+  handleSearch = async e => {
     console.log("You have answered question: " + e.target.name + e.target.value);
+    // 1) We need the user info
+    let user = this.state.user;
+    console.log("===> user : " + JSON.stringify(user));
+    // 2) Question number and the answer / value  
+    let questionNumber = e.target.name;
+    let value = e.target.value;
+    console.log("===> questionNumber : " + questionNumber);
+    console.log("===> value : " + value);
+    // 3) Update data in the db
+    // Check what question was answered and update that question only
+    let responses = user.responses[0]; // {question1: "Male", question2: "Cars"}
+    responses.question2 = "Cars";
+    responses.question3 = "Sailing";
+    //user.responses[0] = { question1: "Male" };
+    const updatedUser = await userService.update(user);
+
+
+
+
+    // const newTasksArray = this.state.tasks.map(task =>
+    //   task._id === updatedTask._id ? updatedTask : task
+    // );
+    // this.setState(
+    //   { tasks: newTasksArray },
+    //   // Using cb to wait for state to update before rerouting
+    //   () => this.props.history.push('/')
+    // );
+
     // 2) Update question in the db
     // 3) Filter users based on answer
 
-
-
-
-
-
     // let users = this.state.users;
     // if (e.target.value) {
-    //   users = users.filter(s => {
-    //     return s.code.includes(e.target.value);
+    //   users = users.filter(user => {
+    //     let otherUsersResponses = user.responses[0];
+    //     if (questionNumber == "3"){
+    //        let answer = otherUsersResponses.question3 
+    //        if(answer.includes(e.target.value){
+    //          return true;
+    //}
+    //}
+    //     1) 
+    //     2) If a single response matches / includes e.target.value return treu an 
+    //     return user.responses[0].includes(e.target.value);
     //   });
     // }
     // this.setState({ users });

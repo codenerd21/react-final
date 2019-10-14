@@ -5,7 +5,8 @@ const SECRET = process.env.SECRET;
 module.exports = {
   signup,
   login,
-  match
+  match,
+  update
 };
 
 
@@ -40,13 +41,15 @@ async function signup(req, res) {
 }
 
 async function match(req, res) {
-  try {
-    const users = await User.find({})
-    res.json(users);
-  } catch (err) {
-    return res.status(401).json(err);
-  }
+  const users = await User.find({})
+  res.json(users);
 }
+
+async function update(req, res) {
+  const updateUserResponse = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.status(200).json(updateUserResponse);
+}
+
 
 /*----- Helper Functions -----*/
 
